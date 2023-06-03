@@ -2,4 +2,4 @@
 LeitnerBox on Excel
 
 Hi there!
-Here is an Excel VBA enabled file to review vocabularies based on Leitner system.
+Here is an Excel VBA macro enabled file to add and review vocabularies based on Leitner system.
