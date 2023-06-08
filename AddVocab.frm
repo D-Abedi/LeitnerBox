@@ -21,11 +21,10 @@ Private Sub boxWord_Change()
             If Me.boxWord.Value = Item Then
                 MsgBox "You have this word on your LeitnerBox.", vbInformation, "Duplicate Word"
                 With Me.boxWord
-                    '.SetFocus
+                    .SetFocus
                     .SelStart = 0
                     .SelLength = Len(.Text)
                 End With
-                Me.boxWord.SetFocus
                 Exit Sub
             End If
         Next Item
@@ -37,7 +36,7 @@ Private Sub boxWord_Enter()
         Me.boxWord.Text = ""
     End If
 End Sub
-Public Sub boxWord_AfterUpdate()
+Private Sub boxWord_AfterUpdate()
     If Me.boxWord.Text = "" Then
         Me.boxWord.ForeColor = RGB(109, 109, 109)
         Me.boxWord.Value = "New Word"
