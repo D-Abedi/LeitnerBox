@@ -13,13 +13,31 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Compare Text
+Private Sub boxWord_Change()
+    With Workbooks("Vocab.xlsm").Worksheets("Sheet1").ListObjects("tblVocab")
+        WordList = .ListColumns("Word").DataBodyRange.Value
+        For Each Item In WordList
+            If Me.boxWord.Value = Item Then
+                MsgBox "You have this word on your LeitnerBox.", vbInformation, "Duplicate Word"
+                With Me.boxWord
+                    '.SetFocus
+                    .SelStart = 0
+                    .SelLength = Len(.Text)
+                End With
+                Me.boxWord.SetFocus
+                Exit Sub
+            End If
+        Next Item
+    End With
+End Sub
 Private Sub boxWord_Enter()
     If Me.boxWord.Text = "New Word" Then
         Me.boxWord.ForeColor = RGB(0, 0, 0)
         Me.boxWord.Text = ""
     End If
 End Sub
-Private Sub boxWord_AfterUpdate()
+Public Sub boxWord_AfterUpdate()
     If Me.boxWord.Text = "" Then
         Me.boxWord.ForeColor = RGB(109, 109, 109)
         Me.boxWord.Value = "New Word"
