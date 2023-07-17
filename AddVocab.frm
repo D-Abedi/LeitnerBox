@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AddVocab 
-   Caption         =   "Add Vocabulary to Leitner Box"
+   Caption         =   "Add the Persian translation of vocabulary"
    ClientHeight    =   4155
    ClientLeft      =   120
    ClientTop       =   465
@@ -66,16 +66,16 @@ Private Sub boxSyn_AfterUpdate()
         Me.boxSyn.Text = "Synonyms"
     End If
 End Sub
-Private Sub boxAnt_Enter()
-    If Me.boxAnt.Text = "Antonyms" Then
-        Me.boxAnt.ForeColor = RGB(0, 0, 0)
-        Me.boxAnt.Text = ""
+Private Sub boxPeTr_Enter()
+    If Me.boxPeTr.Text = "Persian Translation" Then
+        Me.boxPeTr.ForeColor = RGB(0, 0, 0)
+        Me.boxPeTr.Text = ""
     End If
 End Sub
-Private Sub boxAnt_AfterUpdate()
-    If Me.boxAnt.Text = "" Then
-        Me.boxAnt.ForeColor = RGB(109, 109, 109)
-        Me.boxAnt.Text = "Antonyms"
+Private Sub boxPeTr_AfterUpdate()
+    If Me.boxPeTr.Text = "" Then
+        Me.boxPeTr.ForeColor = RGB(109, 109, 109)
+        Me.boxPeTr.Text = "Persian Translation"
     End If
 End Sub
 Private Sub boxDefinition_Enter()
@@ -104,10 +104,10 @@ Private Sub boxExample_AfterUpdate()
 End Sub
 Private Sub btnAddWord_Click()
     Dim EmptyList As String
-    txtArray = Array("New Word", "Part of Speech", "Synonyms", "Antonyms", "Definition", "Examples")
-    tblArray = Array("Word", "PoS", "Syn.", "Ant.", "Definition", "Example")
+    txtArray = Array("New Word", "Part of Speech", "Synonyms", "Persian Translation", "Definition", "Examples")
+    tblArray = Array("Word", "PoS", "Syn.", "PeTr", "Definition", "Example")
     With AddVocab
-        boxArray = Array(.boxWord, .boxPoS, .boxSyn, .boxAnt, .boxDefinition, .boxExample)
+        boxArray = Array(.boxWord, .boxPoS, .boxSyn, .boxPeTr, .boxDefinition, .boxExample)
     End With
     For i = 0 To UBound(boxArray)
         If boxArray(i).Text = txtArray(i) Then EmptyList = EmptyList + "  •  " & txtArray(i) & vbCrLf

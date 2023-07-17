@@ -13,9 +13,9 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub boxAnt_Enter()
+Private Sub boxPeTr_Enter()
     With Workbooks("Vocab.xlsm").Worksheets("sheet1").ListObjects("tblVocab")
-        Me.boxAnt.Value = .ListColumns("Ant.").DataBodyRange(i).Value
+        Me.boxPeTr.Value = .ListColumns("PeTr").DataBodyRange(i).Value
     End With
 End Sub
 Private Sub boxSyn_Enter()
@@ -40,7 +40,7 @@ Private Sub btnAnswer_Click()
     With Workbooks("Vocab.xlsm").Worksheets("sheet1").ListObjects("tblVocab")
         Me.boxDefinition.Value = .ListColumns("Definition").DataBodyRange(i).Value
         Me.boxSyn.Value = .ListColumns("Syn.").DataBodyRange(i).Value
-        Me.boxAnt.Value = .ListColumns("Ant.").DataBodyRange(i).Value
+        Me.boxPeTr.Value = .ListColumns("PeTr").DataBodyRange(i).Value
         Me.boxExample.Value = .ListColumns("Example").DataBodyRange(i).Value
     End With
 End Sub

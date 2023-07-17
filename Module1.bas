@@ -28,7 +28,7 @@ Sub blanker(FormName As UserForm)
     FormName.boxWord.Value = ""
     FormName.boxPoS.Value = ""
     FormName.boxSyn.Value = ""
-    FormName.boxAnt.Value = ""
+    FormName.boxPeTr.Value = ""
     FormName.boxDefinition.Value = ""
     FormName.boxExample.Value = ""
 End Sub
