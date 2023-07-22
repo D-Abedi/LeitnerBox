@@ -66,4 +66,9 @@ With Workbooks("Vocab.xlsm").Worksheets("sheet1").ListObjects("tblVocab")
 End With
 Call looper(i)
 End Sub
+Private Sub Listen_Click()
+With Workbooks("Vocab.xlsm").Worksheets("sheet1").ListObjects("tblVocab")
+    WMP1.Url = "https://www.ldoceonline.com/media/english/ameProns/" & .ListColumns("Word").DataBodyRange(i).Value & ".mp3"
+End With
+End Sub
 '------------

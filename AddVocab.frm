@@ -13,7 +13,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Option Compare Text
+Option Compare Text 'Enabled to NOT case-sensitive search for strings
 Private Sub boxWord_Change()
     With Workbooks("Vocab.xlsm").Worksheets("Sheet1").ListObjects("tblVocab")
         WordList = .ListColumns("Word").DataBodyRange.Value

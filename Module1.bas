@@ -64,6 +64,9 @@ End Sub
 Private Sub iDel()
 SendKeys "{DEL}"
 End Sub
+'------------------------------
+
+
 
 
 
