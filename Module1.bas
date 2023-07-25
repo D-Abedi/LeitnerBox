@@ -1,27 +1,27 @@
 Attribute VB_Name = "Module1"
-Public i As Integer, Flag As Boolean
+Public i As Integer, j As Integer, Flag As Boolean
 Sub AddVocabForm()
     AddVocab.Show
 End Sub
-Sub LeitnerForm()
+Sub ReviewForm()
 On Error Resume Next
     i = 1
-    Leitner.Show
+    Review.Show
 End Sub
 Sub looper(i As Integer)
 UserNamei = Application.UserName
-With Workbooks("Vocab.xlsm").Worksheets("sheet1").ListObjects("tblVocab")
+With Workbooks("Vocab.xlsm").Worksheets("Sheet1").ListObjects("tblVocab")
 nTblVocab = .ListRows.Count
     For i = i To nTblVocab
         If .ListColumns("Review Date").DataBodyRange(i).Value <= Date Then
-            Leitner.boxWord.Value = .ListColumns("Word").DataBodyRange(i).Value
-            Leitner.boxPoS.Value = .ListColumns("Pos").DataBodyRange(i).Value
+            Review.boxWord.Value = .ListColumns("Word").DataBodyRange(i).Value
+            Review.boxPoS.Value = .ListColumns("Pos").DataBodyRange(i).Value
             Exit Sub
         End If
     Next i
 MsgBox "Dear " & UserNamei & "!" & vbCrLf & vbCrLf & _
-        "You did a great job! There is no word to review on this turn.", , "Review Finished"
-Unload Leitner
+        "You did a great job. There is no word to review on this turn.", , "Review Finished"
+Unload Review
 End With
 End Sub
 Sub blanker(FormName As UserForm)
@@ -29,7 +29,7 @@ Sub blanker(FormName As UserForm)
     FormName.boxPoS.Value = ""
     FormName.boxSyn.Value = ""
     FormName.boxPeTr.Value = ""
-    FormName.boxDefinition.Value = ""
+    FormName.boxDef.Value = ""
     FormName.boxExample.Value = ""
 End Sub
 '------
