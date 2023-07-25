@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AddVocab 
-   Caption         =   "Add the Persian translation of vocabulary"
+   Caption         =   "Add a New Word"
    ClientHeight    =   4155
    ClientLeft      =   120
    ClientTop       =   465
@@ -67,7 +67,8 @@ Private Sub boxSyn_AfterUpdate()
     End If
 End Sub
 Private Sub boxPeTr_Enter()
-    If Me.boxPeTr.Text = "Persian Translation" Then
+SendKeys "%+"
+    If Me.boxPeTr.Text = " —Ã„Â" Then
         Me.boxPeTr.ForeColor = RGB(0, 0, 0)
         Me.boxPeTr.Text = ""
     End If
@@ -75,19 +76,20 @@ End Sub
 Private Sub boxPeTr_AfterUpdate()
     If Me.boxPeTr.Text = "" Then
         Me.boxPeTr.ForeColor = RGB(109, 109, 109)
-        Me.boxPeTr.Text = "Persian Translation"
+        Me.boxPeTr.Text = " —Ã„Â"
+    End If
+SendKeys "%+"
+End Sub
+Private Sub boxDef_Enter()
+    If Me.boxDef.Text = "Definition" Then
+        Me.boxDef.ForeColor = RGB(0, 0, 0)
+        Me.boxDef.Text = ""
     End If
 End Sub
-Private Sub boxDefinition_Enter()
-    If Me.boxDefinition.Text = "Definition" Then
-        Me.boxDefinition.ForeColor = RGB(0, 0, 0)
-        Me.boxDefinition.Text = ""
-    End If
-End Sub
-Private Sub boxDefinition_AfterUpdate()
-    If Me.boxDefinition.Text = "" Then
-        Me.boxDefinition.ForeColor = RGB(109, 109, 109)
-        Me.boxDefinition.Text = "Definition"
+Private Sub boxDef_AfterUpdate()
+    If Me.boxDef.Text = "" Then
+        Me.boxDef.ForeColor = RGB(109, 109, 109)
+        Me.boxDef.Text = "Definition"
     End If
 End Sub
 Private Sub boxExample_Enter()
@@ -104,10 +106,10 @@ Private Sub boxExample_AfterUpdate()
 End Sub
 Private Sub btnAddWord_Click()
     Dim EmptyList As String
-    txtArray = Array("New Word", "Part of Speech", "Synonyms", "Persian Translation", "Definition", "Examples")
+    txtArray = Array("New Word", "Part of Speech", "Synonyms", " —Ã„Â", "Definition", "Examples")
     tblArray = Array("Word", "PoS", "Syn.", "PeTr", "Definition", "Example")
     With AddVocab
-        boxArray = Array(.boxWord, .boxPoS, .boxSyn, .boxPeTr, .boxDefinition, .boxExample)
+        boxArray = Array(.boxWord, .boxPoS, .boxSyn, .boxPeTr, .boxDef, .boxExample)
     End With
     For i = 0 To UBound(boxArray)
         If boxArray(i).Text = txtArray(i) Then EmptyList = EmptyList + "  ï  " & txtArray(i) & vbCrLf
