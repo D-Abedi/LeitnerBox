@@ -53,7 +53,7 @@ End Sub
 Private Sub btnFalse_Click()
 Call blanker(Review)
 With Workbooks("Vocab.xlsm").Worksheets("sheet1").ListObjects("tblVocab")
-    .ListColumns("Review Date").DataBodyRange(i).Value = Date
+    .ListColumns("Review Date").DataBodyRange(i).Value = Now + TimeValue("00:30:00")
     .ListColumns("Step").DataBodyRange(i).Value = 0
 End With
 i = i + 1
@@ -69,7 +69,7 @@ Call looper(i)
 End Sub
 Private Sub Listen_Click()
 Dim url As String
-' Check if Longman Dictionary's pronunciation is available, if not Google pronunciation plays
+'--- Check if Longman Dictionary's pronunciation is available. Otherwise, Google pronunciation plays
 With Workbooks("Vocab.xlsm").Worksheets("sheet1").ListObjects("tblVocab")
     url = "https://www.ldoceonline.com/media/english/ameProns/" & .ListColumns("Word").DataBodyRange(i).Value & ".mp3"
     If URLExists(url) = True Then
