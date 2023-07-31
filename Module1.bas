@@ -13,7 +13,7 @@ UserNamei = Application.UserName
 With Workbooks("Vocab.xlsm").Worksheets("Sheet1").ListObjects("tblVocab")
 nTblVocab = .ListRows.Count
     For i = i To nTblVocab
-        If .ListColumns("Review Date").DataBodyRange(i).Value <= Date Then
+        If .ListColumns("Review Date").DataBodyRange(i).Value <= Now Then
             Review.boxWord.Value = .ListColumns("Word").DataBodyRange(i).Value
             Review.boxPoS.Value = .ListColumns("Pos").DataBodyRange(i).Value
             Exit Sub
