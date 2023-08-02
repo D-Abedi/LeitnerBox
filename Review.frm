@@ -68,15 +68,15 @@ End With
 Call looper(i)
 End Sub
 Private Sub Listen_Click()
-Dim url As String
+Dim iURL As String
 '--- Check if Longman Dictionary's pronunciation is available. Otherwise, Google pronunciation plays
 With Workbooks("Vocab.xlsm").Worksheets("sheet1").ListObjects("tblVocab")
-    url = "https://www.ldoceonline.com/media/english/ameProns/" & .ListColumns("Word").DataBodyRange(i).Value & ".mp3"
-    If URLExists(url) = True Then
-        WMP1.url = url
-    Else
-        WMP1.url = "https://ssl.gstatic.com/dictionary/static/sounds/20220808/" & .ListColumns("Word").DataBodyRange(i).Value & "--_gb_1.mp3"
+    iURL = "https://www.ldoceonline.com/media/english/ameProns/" & .ListColumns("Word").DataBodyRange(i).Value & ".mp3"
+    If URLExists(iURL) = False Then
+        iURL = "https://ssl.gstatic.com/dictionary/static/sounds/20220808/" & _
+        LCase(.ListColumns("Word").DataBodyRange(i).Value) & "--_gb_1.mp3"
     End If
+    WMP1.url = iURL
 End With
 End Sub
 '------------
