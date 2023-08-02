@@ -68,7 +68,7 @@ Private Sub boxSyn_AfterUpdate()
 End Sub
 Private Sub boxPeTr_Enter()
 SendKeys "%+"
-    If Me.boxPeTr.Text = "ÊÑÌãå" Then
+    If Me.boxPeTr.Text = "ï¿½ï¿½ï¿½ï¿½ï¿½" Then
         Me.boxPeTr.ForeColor = RGB(0, 0, 0)
         Me.boxPeTr.Text = ""
     End If
@@ -76,7 +76,7 @@ End Sub
 Private Sub boxPeTr_AfterUpdate()
     If Me.boxPeTr.Text = "" Then
         Me.boxPeTr.ForeColor = RGB(109, 109, 109)
-        Me.boxPeTr.Text = "ÊÑÌãå"
+        Me.boxPeTr.Text = "ï¿½ï¿½ï¿½ï¿½ï¿½"
     End If
 SendKeys "%+"
 End Sub
@@ -106,13 +106,13 @@ Private Sub boxExample_AfterUpdate()
 End Sub
 Private Sub btnAddWord_Click()
     Dim EmptyList As String
-    txtArray = Array("New Word", "Part of Speech", "Synonyms", "ÊÑÌãå", "Definition", "Examples")
+    txtArray = Array("New Word", "Part of Speech", "Synonyms", "ï¿½ï¿½ï¿½ï¿½ï¿½", "Definition", "Examples")
     tblArray = Array("Word", "PoS", "Syn.", "PeTr", "Definition", "Example")
     With AddVocab
         boxArray = Array(.boxWord, .boxPoS, .boxSyn, .boxPeTr, .boxDef, .boxExample)
     End With
     For i = 0 To UBound(boxArray)
-        If boxArray(i).Text = txtArray(i) Then EmptyList = EmptyList + "  •  " & txtArray(i) & vbCrLf
+        If boxArray(i).Text = txtArray(i) Then EmptyList = EmptyList + "  ï¿½  " & txtArray(i) & vbCrLf
     Next i
     If EmptyList <> "" Then
         answer = MsgBox("The list below is the fields that are left empty:" _
@@ -142,5 +142,3 @@ End Sub
 Private Sub UserForm_Terminate()
 Application.CommandBars("Cell").Reset
 End Sub
-
-
