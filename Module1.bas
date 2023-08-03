@@ -19,8 +19,10 @@ nTblVocab = .ListRows.Count
             Exit Sub
         End If
     Next i
+    EarlyDate = WorksheetFunction.Min(.ListColumns("Review Date").DataBodyRange)
 MsgBox "Dear " & UserNamei & "!" & vbCrLf & vbCrLf & _
-        "You did a great job. There is no word to review on this turn.", , "Review Finished"
+        "You did a great job. There is no word to review on this turn." & vbCrLf & _
+        "Your next turn will be on:  " & Format(EarlyDate, "ddd mmm/dd, hh:mm."), , "Review Finished"
 Unload Review
 End With
 End Sub
