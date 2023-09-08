@@ -9,21 +9,31 @@ On Error Resume Next
     Review.Show
 End Sub
 Sub looper(i As Integer)
+Dim tblVocab As ListObject
 UserNamei = Application.UserName
-With Workbooks("Vocab.xlsm").Worksheets("Sheet1").ListObjects("tblVocab")
-nTblVocab = .ListRows.Count
+Set tblVocab = Workbooks("Vocab.xlsm").Worksheets("Sheet1").ListObjects("tblVocab")
+With tblVocab
+    nTblVocab = .ListRows.Count
     For i = i To nTblVocab
         If .ListColumns("Review Date").DataBodyRange(i).Value <= Now Then
             Review.boxWord.Value = .ListColumns("Word").DataBodyRange(i).Value
             Review.boxPoS.Value = .ListColumns("Pos").DataBodyRange(i).Value
+            .ListColumns("Word").DataBodyRange(i).Select
             Exit Sub
         End If
     Next i
     EarlyDate = WorksheetFunction.Min(.ListColumns("Review Date").DataBodyRange)
-MsgBox "Dear " & UserNamei & "!" & vbCrLf & vbCrLf & _
+    MsgBox "Dear " & UserNamei & "!" & vbCrLf & vbCrLf & _
         "You did a great job. There is no word to review on this turn." & vbCrLf & _
         "Your next turn will be on:  " & Format(EarlyDate, "ddd mmm/dd, hh:mm."), , "Review Finished"
-Unload Review
+    Unload Review
+End With
+'==== Sort the table by Descending Review Date
+With tblVocab.Sort
+    .SortFields.Clear
+    .SortFields.Add2 Key:=Range("tblVocab[Review Date]"), Order:=xlDescending
+    .Header = xlYes
+    .Apply
 End With
 End Sub
 Sub blanker(FormName As UserForm)
