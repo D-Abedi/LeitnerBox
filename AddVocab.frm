@@ -124,8 +124,8 @@ Private Sub btnAddWord_Click()
     If EmptyList <> "" Then
         answer = MsgBox("The list below is the fields that are left empty:" _
         & vbCrLf & EmptyList & vbCrLf & _
-        "Do you want to fill them up?", vbQuestion + vbYesNo, "Empty Field")
-        If answer = vbYes Then Exit Sub
+        "Do you want to leave without filling them out?", vbQuestion + vbYesNo, "Empty Field")
+        If answer = vbNo Then Exit Sub
     End If
     With Workbooks("Vocab.xlsm").Worksheets("Sheet1").ListObjects("tblVocab")
         .ListRows.Add
