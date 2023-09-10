@@ -9,6 +9,7 @@ On Error Resume Next
     Review.Show
 End Sub
 Sub looper(i As Integer)
+Application.ScreenUpdating = False
 Dim tblVocab As ListObject
 UserNamei = Application.UserName
 Set tblVocab = Workbooks("Vocab.xlsm").Worksheets("Sheet1").ListObjects("tblVocab")
@@ -35,6 +36,8 @@ With tblVocab.Sort
     .Header = xlYes
     .Apply
 End With
+     Application.ScreenUpdating = True
+     Range("A" & tblVocab.ListRows.Count + 1).Select
 End Sub
 Sub blanker(FormName As UserForm)
     FormName.boxWord.Value = ""
