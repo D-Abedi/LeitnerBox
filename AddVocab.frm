@@ -128,17 +128,16 @@ Private Sub btnAddWord_Click()
         If answer = vbNo Then Exit Sub
     End If
     With Workbooks("Vocab.xlsm").Worksheets("Sheet1").ListObjects("tblVocab")
+        If boxArray(0).Text = txtArray(0) Then
+            Unload AddVocab
+            Exit Sub
+        End If
+        .ListRows.Add
         For i = 0 To UBound(boxArray)
             If boxArray(i).Text = txtArray(i) Then boxArray(i).Text = ""
-            If boxArray(0).Text = "" Then
-                Unload AddVocab
-                Exit Sub
-            End If
-            .ListRows.Add
             .ListColumns("Step").DataBodyRange(.ListRows.Count).Value = 0
             .ListColumns("Review Date").DataBodyRange(.ListRows.Count).Value = Now + TimeValue("00:30:00")
-            .ListColumns(tblArray(i)).DataBodyRange(.ListRows.Count).Value = _
-            boxArray(i).Text
+            .ListColumns(tblArray(i)).DataBodyRange(.ListRows.Count).Value = boxArray(i).Text
         Next i
     End With
     Unload AddVocab
